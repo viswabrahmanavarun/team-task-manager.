@@ -74,3 +74,22 @@ npm run dev
 ```
 
 
+
+## 🔑 Demo Credentials
+
+To test the application's role-based access control, you can use the following pre-configured accounts:
+
+### **Admin Account**
+- **Email**: `v.varun2355@gmail.com`
+- **Password**: `123456`
+- **Role**: Full access to create projects, manage team members, and all tasks.
+
+### **Team Member Accounts**
+- **Email**: `harsha@gmail.com`
+- **Email**: `sashank@gmail.com`
+- **Password**: `123456`
+- **Role**: Can view assigned projects and update status of their **own** assigned tasks.
+
+---
+
+Developed by **Varun** - 2026.
