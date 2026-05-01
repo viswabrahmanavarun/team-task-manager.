@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, UserPlus, Search, Loader2, Check } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 interface AddMemberModalProps {
@@ -24,7 +24,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ project, onClose, onSuc
       const config = {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
-      const { data } = await axios.get(`http://localhost:5001/api/auth/search?q=${query}`, config);
+      const { data } = await api.get(`/api/auth/search?q=${query}`, config);
       setResults(data);
     } catch (error) {
       console.error('Search error', error);
@@ -38,7 +38,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ project, onClose, onSuc
       const config = {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
-      await axios.put(`http://localhost:5001/api/projects/${project._id}/members`, { userId }, config);
+      await api.put(`/api/projects/${project._id}/members`, { userId }, config);
       onSuccess();
     } catch (error) {
       console.error('Add member error', error);

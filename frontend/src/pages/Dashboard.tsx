@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Folder, Users, ChevronRight, LayoutGrid, List, CheckSquare, Clock, AlertCircle, Search } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import CreateProjectModal from '../components/CreateProjectModal';
@@ -36,8 +36,8 @@ const Dashboard = () => {
         },
       };
       const [projRes, statsRes] = await Promise.all([
-        axios.get('http://localhost:5001/api/projects', config),
-        axios.get('http://localhost:5001/api/tasks/stats', config),
+        api.get('/api/projects', config),
+        api.get('/api/tasks/stats', config),
       ]);
       setProjects(projRes.data);
       setStats(statsRes.data);

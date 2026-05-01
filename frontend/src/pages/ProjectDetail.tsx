@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Plus, CheckCircle2, Clock, AlertCircle, Calendar, MoreVertical, Trash2, Edit3, UserPlus } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import CreateTaskModal from '../components/CreateTaskModal';
 import AddMemberModal from '../components/AddMemberModal';
@@ -46,8 +46,8 @@ const ProjectDetail = () => {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
       const [projRes, tasksRes] = await Promise.all([
-        axios.get(`http://localhost:5001/api/projects/${id}`, config),
-        axios.get(`http://localhost:5001/api/tasks/project/${id}`, config),
+        api.get(`/api/projects/${id}`, config),
+        api.get(`/api/tasks/project/${id}`, config),
       ]);
       setProject(projRes.data);
       setTasks(tasksRes.data);
@@ -68,7 +68,7 @@ const ProjectDetail = () => {
       const config = {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
-      await axios.put(`http://localhost:5001/api/tasks/${taskId}`, { status: newStatus }, config);
+      await api.put(`/api/tasks/${taskId}`, { status: newStatus }, config);
       fetchData();
     } catch (error) {
       console.error('Error updating task status', error);
@@ -81,7 +81,7 @@ const ProjectDetail = () => {
       const config = {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
-      await axios.delete(`http://localhost:5001/api/tasks/${taskId}`, config);
+      await api.delete(`/api/tasks/${taskId}`, config);
       fetchData();
     } catch (error) {
       console.error('Error deleting task', error);

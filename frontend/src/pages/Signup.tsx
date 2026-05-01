@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { UserPlus, Mail, Lock, User, Shield, Loader2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 const Signup = () => {
@@ -22,7 +22,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:5001/api/auth/register', {
+      const { data } = await api.post('/api/auth/register', {
         name,
         email,
         password,

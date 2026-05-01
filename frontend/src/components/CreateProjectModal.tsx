@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, FolderPlus, Loader2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 interface CreateProjectModalProps {
@@ -28,7 +28,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose, onSucc
           Authorization: `Bearer ${user?.token}`,
         },
       };
-      await axios.post('http://localhost:5001/api/projects', { name, description }, config);
+      await api.post('/api/projects', { name, description }, config);
       onSuccess();
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to create project');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, ClipboardCheck, Loader2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 
 interface CreateTaskModalProps {
@@ -29,7 +29,7 @@ const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ projectId, members, o
       const config = {
         headers: { Authorization: `Bearer ${user?.token}` },
       };
-      await axios.post('http://localhost:5001/api/tasks', {
+      await api.post('/api/tasks', {
         title,
         description,
         project: projectId,
