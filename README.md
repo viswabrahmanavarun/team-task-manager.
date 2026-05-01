@@ -27,7 +27,27 @@ TeamFlow is a state-of-the-art, full-stack project management platform designed 
 - **Analytics at a Glance**: Track project progress with a dynamic dashboard showing total projects, task counts, and completion percentages.
 - **Glassmorphism UI**: A modern, sleek aesthetic using translucent cards and subtle animations.
 
-## Technology Stack
+## ✨ Visual Walkthrough
+
+### 🔐 Authentication
+<div align="center">
+  <img src="screenshots/LoginPage.png" width="800" alt="Login Page">
+  <p><em>Premium Split-Screen Login Experience</em></p>
+</div>
+
+### 📊 Dashboard
+<div align="center">
+  <img src="screenshots/AdminDashboard.png" width="800" alt="Admin Dashboard">
+  <p><em>Centralized Project & Analytics Overview</em></p>
+</div>
+
+### 📋 Project & Task Board
+<div align="center">
+  <img src="screenshots/ProjectDashboard.png" width="800" alt="Project Detail">
+  <p><em>Interactive Kanban Board with Color-Coded Team Badges</em></p>
+</div>
+
+## 🛠️ Technology Stack
 
 - **Frontend**: React 18, Vite, TypeScript, Framer Motion (Animations), Lucide (Icons), Vanilla CSS (Custom Design System).
 - **Backend**: Node.js, Express.js, JWT, Mongoose.
